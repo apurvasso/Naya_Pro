@@ -1,0 +1,28 @@
+{
+  "name": "naya_pro",
+  "version": "1.0.0",
+  "description": "This is a MEA STACK project (MERN STACK). React not used -R\r postman, express, node.js, mongodb used",
+  "main": "app.js",
+  "scripts": {
+    "watch": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apurvasso/Naya_Pro.git"
+  },
+  "author": "apurva@cummins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apurvasso/Naya_Pro/issues"
+  },
+  "homepage": "https://github.com/apurvasso/Naya_Pro#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongodb": "^4.3.1",
+    "mongoose": "^6.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
