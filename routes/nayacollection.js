@@ -7,7 +7,8 @@ router.get("/", async (req, res) => {
   //request that you send should be async request so that process is not locked
   try {
     const nayacollection = await NayaCollection.find();
-    res.json(nayacollection);
+    //res.json(nayacollection);
+    res.send(nayacollection);
   } catch (err) {
     res.send("Error" + err);
   }

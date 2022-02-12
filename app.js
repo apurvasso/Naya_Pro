@@ -5,7 +5,6 @@ const app = express();
 const PORT = process.env.PORT || 9000;
 const url = "mongodb://localhost/nayadatabase";
 //connect to database mongoose
-
 try {
   //this part of the code took long time
   mongoose.connect(url, {
@@ -25,9 +24,7 @@ app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
 // mongoose.connection.on("error", (error) => {
 //   console.log("Problem connection to the database" + error);
 // });
-
 //get the connection holder---handle
-
 const con = mongoose.connection;
 
 con.on("open", function () {
@@ -40,5 +37,4 @@ const nayaRouter = require("./routes/nayacollection"); //module name is furnitur
 //purpose
 //now you have to add a middle ware
 app.use("/nayacollection", nayaRouter); //for all the furniture requests you have to send the requests to furnitureRouter
-
-//app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+// "test": "echo \"Error: no test specified\" && exit 1"

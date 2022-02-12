@@ -4,8 +4,7 @@
   "description": "This is a MEA STACK project (MERN STACK). React not used -R\r postman, express, node.js, mongodb used",
   "main": "app.js",
   "scripts": {
-    "watch": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "nodemon app.js"
   },
   "repository": {
     "type": "git",
