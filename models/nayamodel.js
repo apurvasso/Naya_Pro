@@ -1,61 +1,26 @@
-const mongoose = require("mongoose");
+var mongoose = require("mongoose");
 
-const nayamodelSchema = new mongoose.Schema({
-  items: {
-    type: String,
-    required: true,
-  },
+var Schema = mongoose.Schema;
+
+var productSchema = new Schema({
+  items: { type: String, Required: "Item name cannot be left blank" },
   product_ids: {
     type: Number,
-    required: true,
+    Required: "Product id(integer) cannot be left blank.",
   },
-  prices: {
-    type: Number,
-    required: true,
-  },
+  prices: { type: String, Required: "Product price cannot be left blank." },
   descriptions: {
     type: String,
-    required: true,
+    Required: "Product description cannot be left blank",
   },
-  dimensions: {
-    type: String,
-    required: false,
-  },
-  img_urls: {
-    type: String,
-    required: false,
-  },
-  category: {
-    type: String,
-    required: false,
-  },
-  prod_page_urls: {
-    type: String,
-    required: false,
-  },
-  chair: {
-    type: Number,
-    required: false,
-  },
-  dining_chair: {
-    type: Number,
-    required: false,
-  },
-  accent_chair: {
-    type: Number,
-    required: false,
-  },
-  outdoor_chair: {
-    type: Number,
-    required: false,
-  },
-  lounge_chair: {
-    type: Number,
-    required: false,
-  },
-  rocking_chair: {
-    type: Number,
-    required: false,
-  },
+  dimensions: { type: String },
+  img_urls: { type: String },
+  prices: { type: String, Required: "Product price cannot be left blank." },
+  category: { type: String },
+  prod_page_urls: { type: String },
+  new_category: { type: String },
+  chair: { type: Number },
+  table: { type: Number },
 });
-module.exports = mongoose.model("NayaCollection", nayamodelSchema);
+
+module.exports = mongoose.model("Products", productSchema);
