@@ -1,40 +1,26 @@
-const express = require("express");
+var express = require("express"),
+  app = express(),
+  port = process.env.PORT || 9000, //port number 3000
+  mongoose = require("mongoose"),
+  Product = require("./restapi/models/productModel"),
+  bodyParser = require("body-parser");
 
-const mongoose = require("mongoose");
-const app = express();
-const PORT = process.env.PORT || 9000;
-const url = "mongodb://localhost/nayadatabase";
-//connect to database mongoose
-try {
-  //this part of the code took long time
-  mongoose.connect(url, {
-    useNewUrlParser: true, //parser to avoid the warning
-    useUnifiedTopology: true,
-  });
-} catch (error) {
-  console.log("connection err", error);
-}
-app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+mongoose.Promise = global.Promise;
 
-// mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology:true})
-// .then( () => console.log("connection established...")).catch((err) => console.log(err))
-//parser to avoid the warning
+mongoose.connect("mongodb://localhost/nayadatabase"); //database connection
 
-// mongoose.Promise = global.Promise;
-// mongoose.connection.on("error", (error) => {
-//   console.log("Problem connection to the database" + error);
-// });
-//get the connection holder---handle
-const con = mongoose.connection;
+app.use(bodyParser.urlencoded({ extended: true }));
 
-con.on("open", function () {
-  console.log("connnnnected...");
-}); //whenever it is open I want to execute a callback function which prints a statement
+app.use(bodyParser.json());
 
-app.use(express.json);
+var routes = require("./restapi/routes/productRoutes");
 
-const nayaRouter = require("./routes/nayacollection"); //module name is furniture.js, furnitureRouter will be used for all routing
-//purpose
-//now you have to add a middle ware
-app.use("/nayacollection", nayaRouter); //for all the furniture requests you have to send the requests to furnitureRouter
-// "test": "echo \"Error: no test specified\" && exit 1"
+routes(app);
+
+app.use(function (req, res) {
+  res.status(404).send({ url: req.originalUrl + " not found" });
+});
+
+app.listen(port);
+
+console.log("Naya's -  RESTful web services with Nodejs started on: " + port);
